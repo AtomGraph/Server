@@ -8,7 +8,7 @@
 
     <name>AtomGraph Server</name>
     <description>Server for SPARQL backends</description>
-    <url>https://github.com/AtomGraph/Processor</url>
+    <url>https://github.com/AtomGraph/Server</url>
     <inceptionYear>2023</inceptionYear>
 
     <developers>
@@ -39,9 +39,9 @@
     </properties>
  
     <scm>
-        <url>https://github.com/AtomGraph/Processor</url>
-        <connection>scm:git:git://github.com/AtomGraph/Processor.git</connection>
-        <developerConnection>scm:git:git@github.com:AtomGraph/Processor.git</developerConnection>
+        <url>https://github.com/AtomGraph/Server</url>
+        <connection>scm:git:git://github.com/AtomGraph/Server.git</connection>
+        <developerConnection>scm:git:git@github.com:AtomGraph/Server.git</developerConnection>
       <tag>HEAD</tag>
   </scm>
   
