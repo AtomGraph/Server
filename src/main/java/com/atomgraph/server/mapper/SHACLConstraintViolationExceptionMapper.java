@@ -17,6 +17,7 @@ package com.atomgraph.server.mapper;
 
 import com.atomgraph.core.MediaTypes;
 import com.atomgraph.server.exception.SHACLConstraintViolationException;
+import com.atomgraph.server.status.UnprocessableEntityStatus;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
@@ -39,7 +40,7 @@ public class SHACLConstraintViolationExceptionMapper extends ExceptionMapperBase
     @Override
     public Response toResponse(SHACLConstraintViolationException ex)
     {
-        Resource exception = toResource(ex, Response.Status.fromStatusCode(422), // 422 Unprocessable Entity
+        Resource exception = toResource(ex, UnprocessableEntityStatus.UNPROCESSABLE_ENTITY,
             ResourceFactory.createResource("http://www.w3.org/2011/http-statusCodes#UnprocessableEntity"));
         ex.getModel().add(exception.getModel());
         

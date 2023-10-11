@@ -18,6 +18,7 @@ package com.atomgraph.server.mapper;
 
 import com.atomgraph.core.MediaTypes;
 import com.atomgraph.server.exception.SPINConstraintViolationException;
+import com.atomgraph.server.status.UnprocessableEntityStatus;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import org.apache.jena.rdf.model.ResIterator;
@@ -44,7 +45,7 @@ public class SPINConstraintViolationExceptionMapper extends ExceptionMapperBase 
     @Override
     public Response toResponse(SPINConstraintViolationException ex)
     {
-        Resource exception = toResource(ex, Response.Status.fromStatusCode(422), // 422 Unprocessable Entity
+        Resource exception = toResource(ex, UnprocessableEntityStatus.UNPROCESSABLE_ENTITY,
             ResourceFactory.createResource("http://www.w3.org/2011/http-statusCodes#UnprocessableEntity"));
         ex.getModel().add(exception.getModel());
         
