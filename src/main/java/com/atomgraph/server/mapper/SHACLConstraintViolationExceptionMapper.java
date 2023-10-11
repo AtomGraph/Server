@@ -39,8 +39,8 @@ public class SHACLConstraintViolationExceptionMapper extends ExceptionMapperBase
     @Override
     public Response toResponse(SHACLConstraintViolationException ex)
     {
-        Resource exception = toResource(ex, Response.Status.BAD_REQUEST,
-            ResourceFactory.createResource("http://www.w3.org/2011/http-statusCodes#BadRequest"));
+        Resource exception = toResource(ex, Response.Status.fromStatusCode(422), // 422 Unprocessable Entity
+            ResourceFactory.createResource("http://www.w3.org/2011/http-statusCodes#UnprocessableEntity"));
         ex.getModel().add(exception.getModel());
         
         ex.getModel().add(ex.getValidationReport().getModel());
