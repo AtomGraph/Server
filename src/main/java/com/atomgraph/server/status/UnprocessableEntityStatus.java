@@ -20,6 +20,7 @@ import jakarta.ws.rs.core.Response;
 
 /**
  * Custom response status enum for <code>422 Unprocessable Entity</code>.
+ * 
  * @author {@literal Martynas Jusevičius <martynas@atomgraph.com>}
  */
 public enum UnprocessableEntityStatus implements Response.StatusType
