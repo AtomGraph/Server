@@ -66,7 +66,7 @@ public class SPINConstraintViolationExceptionMapper extends ExceptionMapperBase 
         }
         
         return getResponseBuilder(ex.getModel()).
-                status(422). // 422 Unprocessable Entity
+                status(UnprocessableEntityStatus.UNPROCESSABLE_ENTITY).
                 build();
     }
     

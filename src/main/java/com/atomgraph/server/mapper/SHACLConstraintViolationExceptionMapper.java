@@ -47,7 +47,7 @@ public class SHACLConstraintViolationExceptionMapper extends ExceptionMapperBase
         ex.getModel().add(ex.getValidationReport().getModel());
 
         return getResponseBuilder(ex.getModel()).
-                status(422). // 422 Unprocessable Entity
+                status(UnprocessableEntityStatus.UNPROCESSABLE_ENTITY).
                 build();
     }
     
