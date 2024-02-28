@@ -32,11 +32,9 @@ import jakarta.ws.rs.core.Variant;
 import jakarta.ws.rs.ext.Provider;
 import com.atomgraph.core.MediaTypes;
 import com.atomgraph.core.util.Link;
-import com.atomgraph.core.util.ModelUtils;
 import com.atomgraph.server.vocabulary.LDT;
 import com.atomgraph.server.vocabulary.HTTP;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.core.EntityTag;
 import jakarta.ws.rs.core.HttpHeaders;
 import jakarta.ws.rs.core.MediaType;
 
@@ -83,12 +81,18 @@ abstract public class ExceptionMapperBase
         Variant variant = getRequest().selectVariant(variants);
         if (variant == null) variant = new Variant(com.atomgraph.core.MediaType.TEXT_TURTLE_TYPE, (Locale)null, null); // if still not acceptable, default to Turtle
 
-        return new com.atomgraph.core.model.impl.Response(getRequest(),
-                model,
-                null,
-                new EntityTag(Long.toHexString(ModelUtils.hashModel(model))),
-                variant).
-                getResponseBuilder().
+//      // don't use Response class as it can strip the entity by returning 304 Not Modified
+//        return new com.atomgraph.core.model.impl.Response(getRequest(),
+//                model,
+//                null,
+//                new EntityTag(Long.toHexString(ModelUtils.hashModel(model))),
+//                variant).
+//                getResponseBuilder().
+//            header(HttpHeaders.LINK, new Link(getUriInfo().getBaseUri(), LDT.base.getURI(), null));
+
+        return Response.ok(). // status will be overriden in the subclasses
+            entity(model).
+            variant(variant).
             header(HttpHeaders.LINK, new Link(getUriInfo().getBaseUri(), LDT.base.getURI(), null));
     }
 
