@@ -115,7 +115,7 @@ abstract public class ExceptionMapperBase
      */
     public List<Variant> getVariants(List<MediaType> mediaTypes)
     {
-        return com.atomgraph.core.model.impl.Response.getVariantListBuilder(mediaTypes, getLanguages(), getEncodings()).add().build();
+        return com.atomgraph.core.model.impl.Response.getVariants(mediaTypes, getLanguages(), getEncodings());
     }
     
     /**
